@@ -11,7 +11,12 @@
   export default {
     name: "main.vue",
     data() {
-      return {}
+      return {
+        city : '杭州市'
+      }
+    },
+    mounted() {
+      this.testFunInterface(this.city)
     },
     methods: {
       /**
@@ -21,18 +26,29 @@
       toComponents(anchor) {
         switch (anchor) {
           case 'table' :
-            this.$router.push({path: '/commonTable'});
+            this.$router.push({path: '/referTable'});
             break;
           default:
             ''
             break
         }
-      }
+      },
+      /**
+       * @function testFunInterface 请求示范
+       * @param city 请求参数
+       */
+      async testFunInterface(city) {
+        let params = {
+          city : city
+        }
+        let res = await this.$api.weather(params)
+        console.info(res);
+      },
     }
   }
 </script>
 
-<style scoped>
+<style>
   #global-main {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
