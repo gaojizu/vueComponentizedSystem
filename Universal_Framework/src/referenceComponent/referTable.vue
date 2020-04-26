@@ -49,7 +49,7 @@
             return (
               <span>
                   {event}
-                {odd}
+                  {odd}
               </span>
             )
           }
