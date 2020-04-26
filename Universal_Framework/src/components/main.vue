@@ -4,6 +4,18 @@
     <ul>
       <li @click="toComponents('table')">表格</li>
     </ul>
+    <el-table
+      :data="tableData"
+      style="width: 100%">
+      <template v-for="(item , index) in columnList">
+        <el-table-column
+          :prop=item.prop
+          :label=item.label
+          :align="item.align || 'center'"
+        >
+        </el-table-column>
+      </template>
+    </el-table>
   </div>
 </template>
 
@@ -12,7 +24,57 @@
     name: "main.vue",
     data() {
       return {
-        city : '杭州市'
+        columnList: [{
+          prop: 'date',
+          label: '日期',
+        }, {
+          prop: 'name',
+          label: '姓名',
+        }, {
+          prop: 'address',
+          label: '地址',
+        }, {
+          minWidth: '300px',
+          label: '操作',
+          align: 'center',
+          render: (h, index) => {
+            let event = null;
+            let odd = null;
+            if (index % 2 === 0) {
+              event = (<el-button type="primary" size='mini'> 偶数 </el-button>)
+            } else {
+              odd = (<el-button type="primary" size='mini'> 奇数 </el-button>)
+            }
+            return (
+              <span>
+                  {event}
+                  {odd}
+              </span>
+            )
+          }
+        }],
+        city: '杭州市',
+        tableData: [{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
+          opt : '操作'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄',
+          opt : '操作'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄',
+          opt : '操作'
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1516 弄',
+          opt : '操作'
+        }]
       }
     },
     mounted() {
@@ -39,7 +101,7 @@
        */
       async testFunInterface(city) {
         let params = {
-          city : city
+          city: city
         }
         let res = await this.$api.weather(params)
         console.info(res);
@@ -53,12 +115,13 @@
     margin: 0 0 0 0;
     padding: 0 0 0 0;
   }
-  #global-main a{
+
+  #global-main a {
     text-decoration: none;
   }
 
   #global-main ul li {
-   list-style: none;
+    list-style: none;
     cursor: pointer;
   }
 </style>

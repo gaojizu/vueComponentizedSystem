@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const request = Axios.create({
-  timeout: 3000
+  timeout: 800
 })
 //请求配置
 request.interceptors.request.use(config => {

@@ -33,44 +33,69 @@
         }, {
           prop: 'pro_overTime',
           label: '项目结束时间',
+        }, {
+          minWidth: '300px',
+          label: '操作',
+          align: 'center',
+          render: (h, index) => {
+            console.info(index)
+            let event = null;
+            let odd = null;
+            if (index % 2 === 0) {
+              event = (<el-button type="primary" size='mini'> 偶数 </el-button>)
+            } else {
+              odd = (<el-button type="primary" size='mini'> 奇数 </el-button>)
+            }
+            return (
+              <span>
+                  {event}
+                {odd}
+              </span>
+            )
+          }
         }],
-        tableList: [{
-          pro_name: '造火箭',
-          pro_zq: 20,
-          pro_size: '70ZG',
-          pro_tz: '60亿',
-          pro_tzr: 'clearlove',
-          pro_overTime: '2089-08-09'
-        }, {
-          pro_name: '造火箭',
-          pro_zq: 20,
-          pro_size: '70ZG',
-          pro_tz: '60亿',
-          pro_tzr: 'clearlove',
-          pro_overTime: '2089-08-09'
-        }, {
-          pro_name: '造火箭',
-          pro_zq: 20,
-          pro_size: '70ZG',
-          pro_tz: '60亿',
-          pro_tzr: 'clearlove',
-          pro_overTime: '2089-08-09'
-        }, {
-          pro_name: '造火箭',
-          pro_zq: 20,
-          pro_size: '70ZG',
-          pro_tz: '60亿',
-          pro_tzr: 'clearlove',
-          pro_overTime: '2089-08-09'
-        },]
+        tableList: []
       }
     },
     components: {
       'common-table': commonTable
+    },
+    mounted() {
+      this.getTableLists();
+    },
+    methods: {
+      /**
+       * @function getTableLists 获取table信息数据
+       */
+      getTableLists() {
+        this.$axios.get('http:0.0.0.0/tableList.do').then((res) => {
+          console.info(res);
+          if (res.data.code === 200) {
+            this.tableList = res.data.data.tableList;
+          }
+        }).catch((error) => {
+          console.error(error)
+        })
+      },
+      /**
+       * @function headerStyle 设置头部样式
+       * @param row
+       * @param column
+       * @param rowIndex
+       * @param columnIndex
+       * @returns {string}
+       */
+      headerStyle({row, column, rowIndex, columnIndex}) {
+        return 'tableHeaderStyle'
+      },
     }
   }
 </script>
 
 <style>
-
+  .tableHeaderStyle {
+    background-color: #58aef7;
+    font-size: larger;
+    color: darkred;
+  }
 </style>
