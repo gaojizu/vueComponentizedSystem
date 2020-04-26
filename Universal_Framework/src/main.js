@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui' //引入elementui组件
 import 'element-ui/lib/theme-chalk/index.css'; //引入element样式表
+import store from './store/stroe'
 import api from "./api/api";
 import Axios from 'axios';
 import './mock/index' //引入mockjs 虚拟数据
@@ -15,6 +16,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

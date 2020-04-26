@@ -1,20 +1,37 @@
 <template>
   <div>
+    <common-header :currPage='currPage'>
+    </common-header>
     <common-table
       :tableList="tableList"
       :columnList="columnList"
     >
     </common-table>
+    <operation-area
+      :header="header"
+    >
+      <span>斑马纹：</span>
+      <el-switch
+        v-model="value"
+        active-color="#13ce66"
+        inactive-color="#ff4949">
+      </el-switch>
+    </operation-area>
   </div>
 </template>
 
 <script>
   import commonTable from '../commonComponents/commonTable';
+  import operationArea from "../commonComponents/operationArea";
+  import commonHeader from "../commonComponents/commonHeader";
 
   export default {
     name: "referTable.vue",
     data() {
       return {
+        currPage: this.$route.params.pageFlag,
+        value: false,
+        header: '表格操作',
         columnList: [{
           prop: 'pro_name',
           label: '项目名',
@@ -38,7 +55,6 @@
           label: '操作',
           align: 'center',
           render: (h, index) => {
-            console.info(index)
             let event = null;
             let odd = null;
             if (index % 2 === 0) {
@@ -49,7 +65,7 @@
             return (
               <span>
                   {event}
-                  {odd}
+                {odd}
               </span>
             )
           }
@@ -58,9 +74,15 @@
       }
     },
     components: {
-      'common-table': commonTable
+      'common-table': commonTable,
+      'operation-area': operationArea,
+      'common-header': commonHeader
+    },
+    created() {
+      console.info(this.$route)
     },
     mounted() {
+      this.$store.commit('headerName', '表格')
       this.getTableLists();
     },
     methods: {

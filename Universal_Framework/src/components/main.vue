@@ -2,7 +2,7 @@
   <div id="global-main">
     <h1>欢迎来到VUE组件化系统</h1>
     <ul>
-      <li @click="toComponents('table')">表格</li>
+      <li v-for="(item , index) in commponentsList" @click="toComponents(item.prop)">{{item.name}}</li>
     </ul>
   </div>
 </template>
@@ -13,6 +13,10 @@
     data() {
       return {
         city: '杭州市',
+        commponentsList: [
+          {name: '表格', prop: 'table'},
+          {name: '进度条', prop: 'steps'}
+        ]
       }
     },
     mounted() {
@@ -26,10 +30,17 @@
       toComponents(anchor) {
         switch (anchor) {
           case 'table' :
-            this.$router.push({path: '/referTable'});
+            this.$router.push(
+              {path: '/referTable/table'}
+            );
             break;
-          default:
-            ''
+          case 'steps':
+            this.$router.push(
+              {path: '/referSteps/steps'}
+            );
+            break;
+          default :
+            '';
             break
         }
       },

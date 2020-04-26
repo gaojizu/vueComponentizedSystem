@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const Main = () => import('@/components/main') //主页面
 const referTable = () => import('@/referenceComponent/referTable')
+const referSteps =()=> import('@/referenceComponent/referSteps')
 
 Vue.use(Router)
 
@@ -14,9 +15,14 @@ export default new Router({
       component: Main
     },
     {
-      path: '/referTable',
+      path: '/referTable/:pageFlag',
       name: 'referTable',
       component: referTable
+    },
+    {
+      path: '/referSteps/:pageFlag',
+      name: 'referSteps',
+      component: referSteps
     },
   ]
 })
