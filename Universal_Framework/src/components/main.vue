@@ -4,8 +4,12 @@
     <ul>
       <li v-for="(item , index) in commponentsList" @click="toComponents(item.prop)">{{item.name}}</li>
     </ul>
-    <div class="global-option">
-      <span>城市：</span>
+    <div class="global-option own-main"
+         v-loading="loading"
+         element-loading-spinner="el-icon-loading"
+         element-loading-text="刷新中..."
+         element-loading-background="rgba(0, 0, 0, 0.6)"
+    >
       <el-select v-model="city" placeholder="请选择">
         <el-option
           v-for="item in citys"
@@ -14,19 +18,59 @@
           :value="item.value">
         </el-option>
       </el-select>
-      <span>天气：</span><span>{{tmp}}℃</span>
+      <b>温度：</b><span>{{tmp}}℃</span>
+      <b>风向：</b><span>{{wind.dir}}</span>
+      <b>风速：</b><span>{{wind.spd}}</span>
+      <b>PM2.5:</b><span>{{pm25}}</span>
+      <b>空气质量：</b><span>{{qlty}}</span>
+      <b>更新时间：</b><span>{{basic.update.loc}}</span>
+      <b @click='future_weather = true' class="main-weather">未来天气</b>
+      <i class="el-icon-refresh main-i" @click="getCity"></i>
     </div>
+    <el-dialog :visible.sync="future_weather" :title="city">
+      <common-table
+        :tableList="tableList"
+        :columnList='columnList'
+      >
+      </common-table>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+  import commonTable from "../commonComponents/commonTable";
+
   export default {
     name: "main.vue",
+    components: {
+      'common-table': commonTable
+    },
     data() {
       return {
+        loading: true,
         city: '杭州市',
         tmp: '',
+        qlty:'',
         citys: [],
+        wind: {
+          dir: '',
+          spd: '',
+        },
+        basic: {
+          update: {
+            loc: ''
+          }
+        },
+        pm25: '',
+        tableList: [],
+        columnList: [
+          {prop: 'date', label: '日期'},
+          {prop: 'tmp.max', label: '最高温度/℃'},
+          {prop: 'tmp.min', label: '最低温度/℃'},
+          {prop: 'wind.dir', label: '风向'},
+          {prop: 'wind.spd', label: '风速'},
+        ],
+        future_weather: false,
         commponentsList: []
       }
     },
@@ -80,7 +124,6 @@
        */
       getCity() {
         this.$axios.get('http:0.0.0.0/cityInfos.do').then((res) => {
-          console.info(res);
           if (res.data.code === 200) {
             this.citys = res.data.data.citys;
             this.getCityInfo(this.city)
@@ -96,12 +139,22 @@
        * @param city 请求参数
        */
       async getCityInfo(city) {
+        this.loading = true;
         let params = {
           city: city
         }
         let res = await this.$api.weather(params)
-        this.tmp = res.data.now.tmp;
-        console.info(res);
+        if (res) {
+          this.loading = false;
+          this.tmp = res.data.now.tmp;
+          this.wind = res.data.now.wind;
+          this.basic = res.data.basic;
+          this.qlty = res.data.aqi.city.qlty;
+          this.tableList = res.data.daily_forecast;
+          this.pm25 = res.data.aqi.city.pm25;
+        } else {
+          this.$message.error('请求失败')
+        }
       },
     }
   }
@@ -119,6 +172,21 @@
 
   #global-main ul li {
     list-style: none;
+    cursor: pointer;
+  }
+
+  .own-main {
+    background-color: #58aef5;
+    color: #FFFFFF;
+    font-size: large;
+    border-radius: 4px;
+  }
+
+  .main-i {
+    cursor: pointer;
+  }
+
+  .main-weather {
     cursor: pointer;
   }
 </style>
