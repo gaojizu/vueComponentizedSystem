@@ -1,6 +1,5 @@
 <template>
   <div id="global-main">
-    <h1>欢迎来到VUE组件化系统</h1>
     <ul>
       <li v-for="(item , index) in commponentsList" @click="toComponents(item.prop)">{{item.name}}</li>
     </ul>
@@ -27,19 +26,22 @@
       <b @click='future_weather = true' class="main-weather">未来天气</b>
       <i class="el-icon-refresh main-i" @click="getCity"></i>
     </div>
-    <el-dialog :visible.sync="future_weather" :title="city">
+
+    <el-drawer
+      :title="city"
+      :visible.sync="future_weather"
+      direction="ltr">
       <common-table
         :tableList="tableList"
         :columnList='columnList'
       >
       </common-table>
-    </el-dialog>
+    </el-drawer>
   </div>
 </template>
 
 <script>
   import commonTable from "../commonComponents/commonTable";
-
   export default {
     name: "main.vue",
     components: {
@@ -89,6 +91,7 @@
        * @param anchor 锚点 指向组件地址
        */
       toComponents(anchor) {
+        console.info(anchor)
         switch (anchor) {
           case 'table' :
             this.$router.push(
@@ -100,6 +103,11 @@
               {path: '/referSteps/steps'}
             );
             break;
+          case 'bootStrapTable':
+            this.$router.push(
+              {path: '/bootStrapTable/bootStrapTable'}
+            );
+            break;
           default :
             '';
             break
@@ -109,7 +117,7 @@
        * @function getComponents 获取到插件集
        */
       getComponents() {
-        this.$axios.get('http:0.0.0.0/commponentsLists.do').then((res) => {
+        this.$axios.get('api/commponentsLists.do').then((res) => {
           if (res.data.code === 200) {
             this.commponentsList = res.data.data.components;
           } else {
@@ -123,7 +131,7 @@
        * @function getCity 获取到城市集
        */
       getCity() {
-        this.$axios.get('http:0.0.0.0/cityInfos.do').then((res) => {
+        this.$axios.get('api/cityInfos.do').then((res) => {
           if (res.data.code === 200) {
             this.citys = res.data.data.citys;
             this.getCityInfo(this.city)

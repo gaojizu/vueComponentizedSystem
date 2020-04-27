@@ -6,6 +6,12 @@ import 'element-ui/lib/theme-chalk/index.css'; //引入element样式表
 import store from './store/stroe'
 import api from "./api/api";
 import Axios from 'axios';
+import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap-table/dist/bootstrap-table.min.css'
+import 'bootstrap-table/dist/bootstrap-table.min.js'
+import 'bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js'
 import './mock/index' //引入mockjs 虚拟数据
 
 Vue.use(ElementUI)
@@ -17,7 +23,7 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })
 // new Vue({

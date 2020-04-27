@@ -62,7 +62,7 @@
   import commonTable from '../commonComponents/commonTable';
   import operationArea from "../commonComponents/operationArea";
   import commonHeader from "../commonComponents/commonHeader";
-
+  import MockInterfaces from "../mock/index"
   export default {
     name: "referTable.vue",
     data() {
@@ -140,8 +140,6 @@
     watch: {
       color(n, o) {
         this.headerObjSty.background = n + '!important'
-        //this.headerStyle(n)
-        console.info(n)
       }
     },
     methods: {
@@ -149,7 +147,7 @@
        * @function getTableLists 获取table信息数据
        */
       getTableLists() {
-        this.$axios.get('http:0.0.0.0/tableList.do').then((res) => {
+        this.$axios.post('api/tableList.do',{params:'pros'}).then((res) => {
           console.info(res);
           if (res.data.code === 200) {
             this.tableList = res.data.data.tableList;
