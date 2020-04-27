@@ -10,6 +10,7 @@
       :show-header='attribute.show_header'
       :highlight-current-row='attribute.highlight_current_row'
       :header-cell-class-name='headerStyle'
+      :header-cell-style="headerObjSty"
       :row-class-name='rowStyle'
     >
       <el-table-column
@@ -84,6 +85,14 @@
         type: Function,
         default:
         ownHeaderStyle
+      },
+      headerObjSty: {
+        type: Object,
+        default: () => {
+          return {
+            'color': '#FFFFFF'
+          }
+        }
       },
       rowStyle: {
         type: Function,
