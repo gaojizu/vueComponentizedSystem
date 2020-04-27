@@ -29,14 +29,14 @@ const tableList = {
       pro_tz: '90亿',
       pro_tzr: 'clearlove',
       pro_overTime: '2025-05-20'
-    },{
+    }, {
       pro_name: '长期月球居住',
       pro_zq: '100年',
       pro_size: '2500',
       pro_tz: '900亿',
       pro_tzr: 'clearlove',
       pro_overTime: '2120-05-20'
-    },{
+    }, {
       pro_name: '苹果笔记本不要钱',
       pro_zq: '1000年',
       pro_size: '25000',
@@ -44,7 +44,8 @@ const tableList = {
       pro_tzr: 'clearlove',
       pro_overTime: '3120-05-20'
     }]
-  }
+  },
+  msg: '请求成功'
 }
 const tableLists = {tableList}
 export default tableLists;
