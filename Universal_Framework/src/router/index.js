@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Main = () => import('@/components/main') //主页面
+const main = () => import('@/components/main') //主页面
 const referTable = () => import('@/referenceComponent/referTable')
 const referSteps = () => import('@/referenceComponent/referSteps')
 const bootStrapTable = () => import('@/referenceComponent/bootStrapTable')
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Main',
-      component: Main
+      name: 'main',
+      component: main
     },
     {
       path: '/referTable/:pageFlag',
