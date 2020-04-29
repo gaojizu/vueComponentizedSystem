@@ -1,9 +1,9 @@
 <template>
   <div>
-    <el-header>
+    <el-header v-show='!(path === "/")'>
       <el-row>
         <el-col :span="4">
-          <i class="el-icon-picture-outline-round">LOGO</i>
+          <i style="cursor: pointer" class="el-icon-picture-outline-round" @click="mainPage">LOGO</i>
         </el-col>
         <el-col :span="16">
           VUE组件展示系统
@@ -21,7 +21,6 @@
           </el-dropdown>
         </el-col>
       </el-row>
-
     </el-header>
   </div>
 </template>
@@ -29,9 +28,16 @@
 <script>
   export default {
     name: "commonHeader",
+    props: {
+      show: {
+        type: Boolean,
+        default: true
+      }
+    },
     data() {
       return {
-        loginName: sessionStorage.getItem('loginName') ? sessionStorage.getItem('loginName') : '用户名'
+        path: '',
+        loginName: sessionStorage.getItem('loginName') ? sessionStorage.getItem('loginName') : ''
       }
     },
     methods: {
@@ -42,10 +48,33 @@
         sessionStorage.clear()
         this.$router.push({path: '/'})
       },
+      /**
+       * @function mainPage 回到主页
+       */
+      mainPage() {
+        this.$router.push({path: '/main'})
+      },
       personInfo() {
 
       }
     },
+    mounted() {
+      this.path = this.$route.path;
+      console.info(this.path)
+    },
+    watch: {
+      loginName(n, o) {
+        if (n === '') {
+          this.loginName = sessionStorage.getItem('loginName')
+        } else {
+
+        }
+      },
+
+      '$route'(to, from) {
+        this.path = to.path;
+      }
+    }
 
   }
 </script>

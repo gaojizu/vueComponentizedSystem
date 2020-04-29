@@ -1,5 +1,5 @@
 <template>
-  <div id="global-header">
+  <div id="global-back">
     <el-page-header @back="goBack" :content="currPage">
     </el-page-header>
   </div>
@@ -28,7 +28,9 @@
   }
 </script>
 <style>
-  #global-header {
+  #global-back {
     color: #58aef5;
+    margin-top: 10px;
+    margin-bottom:10px;
   }
 </style>

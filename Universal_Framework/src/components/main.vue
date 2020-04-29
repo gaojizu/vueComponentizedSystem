@@ -1,6 +1,5 @@
 <template>
   <div id="global-main">
-    <common-header></common-header>
     <ul>
       <li v-for="(item , index) in commponentsList" @click="toComponents(item.prop)">
         <h5 class="prop-h5">
