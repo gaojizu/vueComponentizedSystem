@@ -3,6 +3,7 @@ import tableLists from "./tableInfos";
 import citys from "./citysInfos";
 import commponentsLists from './commponentsLists'
 import bootstrapTable from './bootstrapTable'
+import loginInfos from "./login";
 
 Mock.mock('api/tableList.do', 'post', (option) => {
   if (option.body) {
@@ -17,7 +18,14 @@ Mock.mock('api/commponentsLists.do', 'get', () => {
 })
 Mock.mock('api/bootstrapTable.do', 'get', (option) => {
   console.info(option)
-    return bootstrapTable
+  return bootstrapTable
+})
+Mock.mock('api/login.do', 'post', (option) => {
+  if (option.body) {
+    return loginInfos
+  } else {
+    return false
+  }
 })
 
 

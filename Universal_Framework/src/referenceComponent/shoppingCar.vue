@@ -1,17 +1,14 @@
 <template>
 <div>
-  <common-header :currPage='currPage'>
-  </common-header>
+  <common-back :currPage='currPage'>
+  </common-back>
+
 </div>
 </template>
 
 <script>
-  import commonHeader from "../commonComponents/commonHeader";
+  import commonBack from "../commonComponents/commonBack";
 	export default {
-		name: "shoppingCar",
-    components:{
-		  'common-header' : commonHeader
-    },
     data(){
 		  return {
         currPage : this.$route.params.pageFlag,

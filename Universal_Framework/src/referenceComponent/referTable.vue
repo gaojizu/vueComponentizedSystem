@@ -1,7 +1,7 @@
 <template>
   <div>
-    <common-header :currPage='currPage'>
-    </common-header>
+    <common-back :currPage='currPage'>
+    </common-back>
     <common-table
       :tableList="tableList"
       :columnList="columnList"
@@ -61,8 +61,6 @@
 <script>
   import commonTable from '../commonComponents/commonTable';
   import operationArea from "../commonComponents/operationArea";
-  import commonHeader from "../commonComponents/commonHeader";
-  import MockInterfaces from "../mock/index"
   export default {
     name: "referTable.vue",
     data() {
@@ -128,7 +126,6 @@
     components: {
       'common-table': commonTable,
       'operation-area': operationArea,
-      'common-header': commonHeader,
     },
     created() {
       console.info(this.$route)

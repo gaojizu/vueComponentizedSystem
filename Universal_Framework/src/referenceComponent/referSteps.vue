@@ -1,7 +1,7 @@
 <template>
   <div>
-    <common-header :currPage='currPage'>
-    </common-header>
+    <common-back :currPage='currPage'>
+    </common-back>
     <common-Steps
       class="curr-step-sty"
       :active="active"
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-  import commonHeader from "../commonComponents/commonHeader";
   import commonSteps from "../commonComponents/commonSteps";
 
   export default {
@@ -47,7 +46,6 @@
       }
     },
     components: {
-      'common-header': commonHeader,
       'common-Steps': commonSteps
     },
     methods: {

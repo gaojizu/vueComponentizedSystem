@@ -1,5 +1,6 @@
 <template>
   <div id="global-main">
+    <common-header></common-header>
     <ul>
       <li v-for="(item , index) in commponentsList" @click="toComponents(item.prop)">
         <h5 class="prop-h5">
@@ -43,6 +44,7 @@
         :columnList='columnList'
       >
       </common-table>
+      <h4>建议</h4>
 
     </el-drawer>
   </div>
@@ -195,6 +197,7 @@
   #global-main ul {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
 
   #global-main ul li {
@@ -232,10 +235,14 @@
 
 
   .own-main {
-    background-color: #58aef5;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #000000;
+    z-index: 1;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border-top: 1px solid #cccccc;
     font-size: large;
-    border-radius: 4px;
   }
 
   .main-i {

@@ -1,16 +1,28 @@
 <template>
   <div id="app">
-    <div class="global-app">
-      <div style="width: 15%">
-        <h3>logo</h3>
-      </div>
-      <div style="width: 70%">
-        <h3>VUE组件化展示系统</h3>
-      </div>
-      <div style="width: 15%">
-        Clearlove
-      </div>
-    </div>
+    <!--    <el-menu-->
+    <!--      :default-active="activeIndex"-->
+    <!--      class="el-menu-demo"-->
+    <!--      mode="horizontal"-->
+    <!--      @select="handleSelect"-->
+    <!--      background-color="#545c64"-->
+    <!--      text-color="#fff"-->
+    <!--      active-text-color="#ffd04b">-->
+    <!--      <el-menu-item index="1">首页</el-menu-item>-->
+    <!--      <el-menu-item index="2">系统介绍</el-menu-item>-->
+    <!--      <el-submenu index="3" style="float: right">-->
+    <!--        <template slot="title">我的工作台</template>-->
+    <!--        <el-menu-item index="2-1">选项1</el-menu-item>-->
+    <!--        <el-menu-item index="2-2">选项2</el-menu-item>-->
+    <!--        <el-menu-item index="2-3">选项3</el-menu-item>-->
+    <!--        <el-submenu index="2-4">-->
+    <!--          <template slot="title">选项4</template>-->
+    <!--          <el-menu-item index="2-4-1">选项1</el-menu-item>-->
+    <!--          <el-menu-item index="2-4-2">选项2</el-menu-item>-->
+    <!--          <el-menu-item index="2-4-3">选项3</el-menu-item>-->
+    <!--        </el-submenu>-->
+    <!--      </el-submenu>-->
+    <!--    </el-menu>-->
     <router-view/>
   </div>
 </template>
@@ -20,7 +32,9 @@
   export default {
     name: 'App',
     data() {
-      return {}
+      return {
+        activeIndex: '1'
+      }
     }
   }
 </script>
@@ -36,12 +50,19 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    margin-top: 60px;
+    margin-bottom: 70px;
   }
 
   .global-option {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    width: 100%
+
+    /*position: absolute;*/
+    /*bottom: 0px;*/
+    /*left: 10px;*/
   }
 
   .global-app {
@@ -57,5 +78,9 @@
     height: 40px;
     margin-bottom: 10px;
     background-color: #000000;
+  }
+
+  .el-menu-item {
+    margin-left: 10px;
   }
 </style>

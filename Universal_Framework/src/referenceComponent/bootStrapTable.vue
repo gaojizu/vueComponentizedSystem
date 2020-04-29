@@ -1,13 +1,12 @@
 <template>
   <div>
-    <common-header :currPage='currPage'>
-    </common-header>
+    <common-back :currPage='currPage'>
+    </common-back>
     <table id="table" ref="table"></table>
   </div>
 </template>
 
 <script>
-  import commonHeader from "../commonComponents/commonHeader";
 
   export default {
     name: "bootStrapTable",
@@ -87,11 +86,6 @@
       }
     },
 
-    components: {
-      'common-header':
-      commonHeader,
-    }
-    ,
   }
 </script>
 
