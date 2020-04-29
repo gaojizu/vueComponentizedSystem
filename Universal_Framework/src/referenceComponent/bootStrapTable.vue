@@ -28,6 +28,14 @@
           $('#table').bootstrapTable({
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             pagination: true,  //是否分页
+            //toolbar: '#toolbar',
+            detailView: true,  //前面的加号，详细数据
+            detailFormatter: this.detailFormatter,
+            singleSelect: true,
+            checkbox: true,
+            rowStyle: this.rowStyle,
+            cellStyle: this.cellStyle,
+            clickToSelect: true,
             sortable: true,    //是否排阻
             sortOrder: 'asc',  //正序或者倒序
             pageSize: 5,       //每夜显示多少条
@@ -47,14 +55,43 @@
             columns: res.data.data.columns  //表格列数据
           })
         }).catch((error) => {
-          console.info(error)
+          console.error(error)
         })
 
+      },
+      rowStyle(row, index) {
+        console.info(row, index)
+        if (index % 2 === 0) {
+          return {
+            css: {
+              'background': '#58aef7'
+            }
+          }
+        } else {
+          return {}
+        }
+      },
+      detailFormatter(row, index) {
+        console.info(row, index)
+      },
+      cellStyle(row, index) {
+        if (index % 2 === 0) {
+          return {
+            css: {
+              'background': '#58aef7'
+            }
+          }
+        } else {
+          return {}
+        }
       }
     },
+
     components: {
-      'common-header': commonHeader,
-    },
+      'common-header':
+      commonHeader,
+    }
+    ,
   }
 </script>
 

@@ -1,7 +1,14 @@
 <template>
   <div id="global-main">
     <ul>
-      <li v-for="(item , index) in commponentsList" @click="toComponents(item.prop)">{{item.name}}</li>
+      <li v-for="(item , index) in commponentsList" @click="toComponents(item.prop)">
+        <h5 class="prop-h5">
+          {{item.name}}
+        </h5>
+        <h6 class="prop-h6">
+          {{item.introduce}}
+        </h6>
+      </li>
     </ul>
     <div class="global-option own-main"
          v-loading="loading"
@@ -36,12 +43,14 @@
         :columnList='columnList'
       >
       </common-table>
+
     </el-drawer>
   </div>
 </template>
 
 <script>
   import commonTable from "../commonComponents/commonTable";
+
   export default {
     name: "main.vue",
     components: {
@@ -52,7 +61,7 @@
         loading: true,
         city: '杭州市',
         tmp: '',
-        qlty:'',
+        qlty: '',
         citys: [],
         wind: {
           dir: '',
@@ -106,6 +115,11 @@
           case 'bootStrapTable':
             this.$router.push(
               {path: '/bootStrapTable/bootStrapTable'}
+            );
+            break;
+          case 'shoppingCar':
+            this.$router.push(
+              {path: '/shoppingCar/shoppingCar'}
             );
             break;
           default :
@@ -178,10 +192,44 @@
     text-decoration: none;
   }
 
+  #global-main ul {
+    display: flex;
+    flex-direction: row;
+  }
+
   #global-main ul li {
     list-style: none;
     cursor: pointer;
+    text-align: center;
+    display: block;
+    width: 13rem;
+    height: 13rem;
+    border: 2px solid #58aef5;
+    margin: 10px 10px 0 0;
+    border-radius: 4px;
   }
+
+  #global-main ul li:hover .prop-h6 {
+    background-color: #58aef5;
+    color: #FFFFFF;
+    opacity: 1;
+    font-weight: bolder;
+    /*visibility: visible;*/
+  }
+
+  .prop-h5 {
+    height: 15%;
+  }
+
+  .prop-h6 {
+    background-color: #58aef5;
+    opacity: 0.2;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    /*visibility: hidden;*/
+  }
+
 
   .own-main {
     background-color: #58aef5;

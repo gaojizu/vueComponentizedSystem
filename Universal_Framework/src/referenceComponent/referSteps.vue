@@ -14,8 +14,10 @@
     <div class="global-option">
       <span>请输入已完成步数：</span>
       <el-input style="width: 200px" type="Number" v-model="stepsNum"></el-input>
-      <el-button type="primary" plain @click="add_steps">新增一步</el-button>
-      <el-button type="warning" plain @click="del_steps">删除一步</el-button>
+      <el-button type="primary" plain @click="add_steps('behind')">新增一步</el-button>
+      <el-button type="primary" plain @click="add_steps('prep')">从前面新增一步</el-button>
+      <el-button type="warning" plain @click="del_steps('prep')">删除一步</el-button>
+      <el-button type="warning" plain @click="del_steps('behind')">从前面删除一步</el-button>
     </div>
 
   </div>
@@ -52,25 +54,38 @@
       /**
        * @function add_steps
        */
-      add_steps() {
+      add_steps(val) {
         this.count_step = Number(this.stepsDataList.length)
         let count = ++this.count_step;
-        this.stepsDataList.push({title: '第' + count + '步', describe: '我是第' + count + '步'})
+        if (val === 'behind') {
+          this.stepsDataList.push({title: '第' + count + '步', describe: '我是第' + count + '步'})
+        } else {
+          this.stepsDataList.unshift({title: '第' + count + '步', describe: '我是第' + count + '步'})
+        }
+
       },
       /**
        * @function del_steps
        */
-      del_steps() {
+      del_steps(val) {
         if (this.stepsNum >= Number(this.stepsDataList.length)) {
           this.stepsNum = Number(this.stepsDataList.length)
         } else {
-
         }
-        if (this.stepsDataList.length > 1) {
-          this.stepsDataList.pop()
+        if (val === 'prep') {
+          if (this.stepsDataList.length > 1) {
+            this.stepsDataList.pop()
+          } else {
+            this.$message.error('至少一步')
+          }
         } else {
-          this.$message.error('至少一步')
+          if (this.stepsDataList.length > 1) {
+            this.stepsDataList.shift()
+          } else {
+            this.$message.error('至少一步')
+          }
         }
+
       }
     },
     watch: {

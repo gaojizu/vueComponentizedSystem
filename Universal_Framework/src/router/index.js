@@ -5,6 +5,7 @@ const main = () => import('@/components/main') //主页面
 const referTable = () => import('@/referenceComponent/referTable')
 const referSteps = () => import('@/referenceComponent/referSteps')
 const bootStrapTable = () => import('@/referenceComponent/bootStrapTable')
+const shoppingCar = () => import('@/referenceComponent/shoppingCar')
 
 Vue.use(Router)
 
@@ -28,6 +29,10 @@ export default new Router({
       path: '/bootStrapTable/:pageFlag',
       name: 'bootStrapTable',
       component: bootStrapTable
+    },{
+      path: '/shoppingCar/:pageFlag',
+      name: 'shoppingCar',
+      component: shoppingCar
     },
   ]
 })
