@@ -15,7 +15,10 @@ import 'bootstrap-table/dist/bootstrap-table.min.css'
 import 'bootstrap-table/dist/bootstrap-table.min.js'
 import 'bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js'
 import './mock/index' //引入mockjs 虚拟数据
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
+Vue.use(Vant);
 Vue.use(ElementUI)
 Vue.component("common-back", commonBack)
 Vue.component("common-header", commonHeader)

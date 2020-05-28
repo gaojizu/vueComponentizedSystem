@@ -118,6 +118,16 @@
               {path: '/bootStrapTable/bootStrapTable'}
             );
             break;
+          case 'stop':
+            this.$router.push(
+              {path: '/stop/stop'}
+            );
+            break;
+          case 'search':
+            this.$router.push(
+              {path: '/search/search'}
+            );
+            break;
           case 'shoppingCar':
             this.$router.push(
               {path: '/shoppingCar/shoppingCar'}

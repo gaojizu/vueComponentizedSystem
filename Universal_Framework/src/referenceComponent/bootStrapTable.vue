@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
   export default {
     name: "bootStrapTable",
     data() {
@@ -29,7 +28,6 @@
             pagination: true,  //是否分页
             //toolbar: '#toolbar',
             detailView: true,  //前面的加号，详细数据
-            detailFormatter: this.detailFormatter,
             singleSelect: true,
             checkbox: true,
             rowStyle: this.rowStyle,
@@ -58,6 +56,12 @@
         })
 
       },
+      /**
+       * @function rowStyle
+       * @param row
+       * @param index
+       * @returns {{css: {background: string}}|{}}
+       */
       rowStyle(row, index) {
         console.info(row, index)
         if (index % 2 === 0) {
@@ -70,9 +74,12 @@
           return {}
         }
       },
-      detailFormatter(row, index) {
-        console.info(row, index)
-      },
+      /**
+       * @function cellStyle
+       * @param row
+       * @param index
+       * @returns {{css: {background: string}}|{}}
+       */
       cellStyle(row, index) {
         if (index % 2 === 0) {
           return {

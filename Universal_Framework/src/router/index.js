@@ -7,7 +7,8 @@ const referTable = () => import('@/referenceComponent/referTable')
 const referSteps = () => import('@/referenceComponent/referSteps')
 const bootStrapTable = () => import('@/referenceComponent/bootStrapTable')
 const shoppingCar = () => import('@/referenceComponent/shoppingCar')
-
+const stop = () => import('@/referenceComponent/stop')
+const search = () => import('@/referenceComponent/search')
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +37,15 @@ export default new Router({
       name: 'bootStrapTable',
       component: bootStrapTable
     }, {
+      path: '/stop/:pageFlag',
+      name: 'stop',
+      component: stop
+    },
+    {
+      path: '/search/:pageFlag',
+      name: 'search',
+      component: search
+    },{
       path: '/shoppingCar/:pageFlag',
       name: 'shoppingCar',
       component: shoppingCar

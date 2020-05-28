@@ -90,6 +90,7 @@
       login(name, password) {
         this.$axios.post('api/login.do', {name: name, password: password}).then((res) => {
           if (res.data.code === 200) {
+            console.log(123)
             sessionStorage.setItem('loginName', name)
             sessionStorage.setItem('password', password)
             this.$router.push({path: '/main'})

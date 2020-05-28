@@ -37,22 +37,30 @@
     data() {
       return {
         path: '',
+        currPage: '',
         loginName: sessionStorage.getItem('loginName') ? sessionStorage.getItem('loginName') : ''
       }
+    },
+    created() {
+      console.log('created')
     },
     methods: {
       /**
        * @function loginOut 登出
        */
       loginOut() {
-        sessionStorage.clear()
+        sessionStorage.clear()  //将所有的缓存清除
         this.$router.push({path: '/'})
       },
       /**
        * @function mainPage 回到主页
        */
       mainPage() {
-        this.$router.push({path: '/main'})
+        if (this.currPage === '/main') {
+
+        } else {
+          this.$router.push({path: '/main'})
+        }
       },
       personInfo() {
 
@@ -72,6 +80,8 @@
       },
 
       '$route'(to, from) {
+        this.currPage = to.fullPath;   //将当前页面地址获取到用来判断是不是可以指向当前界面，因为当前界面是不可以进行指向自己
+        this.$forceUpdate()
         this.path = to.path;
       }
     }

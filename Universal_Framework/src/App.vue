@@ -12,6 +12,7 @@
     data() {
       return {
         //showFlag: sessionStorage.getItem('loginName') ? true : false,
+        userInfo:sessionStorage.getItem('loginName')
       }
     },
     mounted() {
