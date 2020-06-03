@@ -2,21 +2,40 @@
   <div>
     <common-back :currPage='currPage'>
     </common-back>
-    <van-field v-model="currValue" @click="vantShow=true" placeholder="请选择" label="应用名称"></van-field>
+    <!--    <van-field onkeypress="TextValidate()" label="不可以特殊字符"></van-field>-->
+    <input onkeypress="TextValidate()" type="text" οnkeyup="this.value=this.value.replace(/[^u4e00-u9fa5w]/g,'');">
+
+    <van-field placeholder="请输入" type="textarea"
+               onkeyup="this.value=this.value.replace(/[#\$\^&]/g,'');"
+               label="应用名称"></van-field>
+
+    <van-field placeholder="请输入表情" type="textarea"
+               v-model="useVlaue"
+               onkeyup="this.value=this.value.replace(/[#\$\^&]/g,'');"
+               label="应用名称"></van-field>
+
+    <van-field v-model="currValue" @click="vantShow=true" placeholder="请选择" label="应用名称"
+               :rules="[{ required: true, message: '请选择应用名称' }]"></van-field>
+
 
     <van-popup v-model="vantShow" closeable position="left" :style="{ height: '100%',width:'100%' }">
-        <div style="width: 80%;position:sticky;top:0;z-index:1;background:#FFFFFF">
-          <van-search
-            v-model="searchValue"
-            shape="round"
-            placeholder="请输入搜索关键词"
-            input-align="center"
-          />
-        </div>
-        <van-cell-group v-for="item in searchResult" :key="item.id">
-          <van-cell :value="item.name" @click="setValue(item.name) ,vantShow=false"/>
-        </van-cell-group>
+      <div style="width: 80%;position:sticky;top:0;z-index:1;background:#FFFFFF">
+        <van-search
+          v-model="searchValue"
+          shape="round"
+          placeholder="请输入搜索关键词"
+          input-align="center"
+        />
+      </div>
+      <van-cell-group v-for="item in searchResult" :key="item.id">
+        <van-cell :value="item.name" @click="setValue(item.name) ,vantShow=false"/>
+      </van-cell-group>
     </van-popup>
+
+    <!--    文件上传-->
+    <van-uploader v-model="fileList" :before-delete="deleteImg" multiple/>
+
+
   </div>
 </template>
 
@@ -26,6 +45,10 @@
     data() {
       return {
         currPage: this.$route.params.pageFlag,
+        fileList: [],
+        testvalue: 3,
+        testsecond: ' ',
+        useVlaue: '',
         currValue: '', //展示给用户的值
         vantShow: false,
         searchValue: '', //搜索的值
@@ -574,12 +597,22 @@
           }],
       }
     },
+    created() {
+      if (this.testvalue === 0) {
+        console.info("这是0")
+      } else if (this.testvalue < 4 && this.testsecond.match(/^[ ]*$/)) {
+        console.info("这是不满足情况的")
+        console.info(Boolean(this.testsecond.match(/^[ ]*$/)))
+      } else {
+        console.info("对了")
+      }
+    },
     computed: {
       searchResult() {
         let filterLists = []; //过滤掉的数组
         let _this = this;
         this.info.map(function (item) {
-          if (item.name.indexOf(_this.searchValue) > -1) {
+          if (item.name.toLowerCase().indexOf(_this.searchValue.toLowerCase()) > -1) {
             return filterLists.push(item)
           }
         })
@@ -587,6 +620,41 @@
       }
     },
     methods: {
+      checkValue() {
+        var regStr = /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig;
+        var org_val = this.useVlaue;
+        if (regStr.test(org_val)) {
+          this.useVlaue = org_val.replace(regStr, "")
+          //$("#input").val(org_val.replace(regStr,""));
+        }
+      },
+      deleteImg() {
+        //直接删除
+        return true;
+      },
+      TextValidate() {
+        var code;
+        var character;
+        var err_msg = "Text can not contain SPACES or any of these special characters other than underscore (_) and hyphen (-).";
+        if (document.all) //判断是否是IE浏览器
+        {
+          code = window.event.keyCode;
+        } else {
+          code = arguments.callee.caller.arguments[0].which;
+        }
+        var character = String.fromCharCode(code);
+
+        var txt = new RegExp("[ ,\\`,\\~,\\!,\\@,\#,\\$,\\%,\\^,\\+,\\*,\\&,\\\\,\\/,\\?,\\|,\\:,\\.,\\<,\\>,\\{,\\},\\(,\\),\\',\\;,\\=,\"]");
+        //特殊字符正则表达式
+        if (txt.test(character)) {
+          alert("User Name can not contain SPACES or any of these special characters:\n , ` ~ ! @ # $ % ^ + & * \\ / ? | : . < > {} () [] \" ");
+          if (document.all) {
+            window.event.returnValue = false;
+          } else {
+            arguments.callee.caller.arguments[0].preventDefault();
+          }
+        }
+      },
       setValue(val) {
         this.currValue = val;
       }
