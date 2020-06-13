@@ -3,12 +3,15 @@ import Router from 'vue-router'
 
 const login = () => import('@/components/login') //登录
 const main = () => import('@/components/main') //主页面
-const referTable = () => import('@/referenceComponent/referTable')
-const referSteps = () => import('@/referenceComponent/referSteps')
+const table = () => import('@/referenceComponent/table')
+const steps = () => import('@/referenceComponent/steps')
 const bootStrapTable = () => import('@/referenceComponent/bootStrapTable')
 const shoppingCar = () => import('@/referenceComponent/shoppingCar')
 const stop = () => import('@/referenceComponent/stop')
 const search = () => import('@/referenceComponent/search')
+const uploadFile = () => import('@/referenceComponent/uploadFile')
+const base = () => import('@/referenceComponent/base')
+const fileZip = () => import('@/referenceComponent/fileZip')
 Vue.use(Router)
 
 export default new Router({
@@ -24,14 +27,14 @@ export default new Router({
       component: main
     },
     {
-      path: '/referTable/:pageFlag',
-      name: 'referTable',
-      component: referTable
+      path: '/table/:pageFlag',
+      name: 'table',
+      component: table
     },
     {
-      path: '/referSteps/:pageFlag',
-      name: 'referSteps',
-      component: referSteps
+      path: '/steps/:pageFlag',
+      name: 'steps',
+      component: steps
     }, {
       path: '/bootStrapTable/:pageFlag',
       name: 'bootStrapTable',
@@ -45,10 +48,23 @@ export default new Router({
       path: '/search/:pageFlag',
       name: 'search',
       component: search
-    },{
+    }, {
       path: '/shoppingCar/:pageFlag',
       name: 'shoppingCar',
       component: shoppingCar
-    },
+    }, {
+      path: '/uploadFile/:uploadFile',
+      name: 'uploadFile',
+      component: uploadFile
+    },//
+    {
+      path: '/fileZip/:fileZip',
+      name: 'fileZip',
+      component: fileZip
+    },{
+      path: '/fileZip/:fileZip',
+      name: 'fileZip',
+      component: fileZip
+    }
   ]
 })

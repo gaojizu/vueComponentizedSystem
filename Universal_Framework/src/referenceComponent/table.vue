@@ -55,6 +55,13 @@
       <span>表头颜色：</span>
       <el-color-picker v-model="color"></el-color-picker>
     </div>
+
+
+
+
+
+
+
   </div>
 </template>
 
@@ -65,6 +72,7 @@
     name: "referTable.vue",
     data() {
       return {
+
         color: '#534673',
         currPage: this.$route.params.pageFlag,
         value: false,
@@ -166,6 +174,8 @@
 </script>
 
 <style>
+
+
   .tableHeaderStyle {
     background-color: #58aef7 !important;
     font-size: larger;

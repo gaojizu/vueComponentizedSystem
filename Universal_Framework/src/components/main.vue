@@ -97,46 +97,11 @@
     },
     methods: {
       /**
-       * @function toComponents 跳转组件相应位置
+       * @function toComponents 跳转组件相应位置  约定组件名字是和路径起一致的
        * @param anchor 锚点 指向组件地址
        */
       toComponents(anchor) {
-        console.info(anchor)
-        switch (anchor) {
-          case 'table' :
-            this.$router.push(
-              {path: '/referTable/table'}
-            );
-            break;
-          case 'steps':
-            this.$router.push(
-              {path: '/referSteps/steps'}
-            );
-            break;
-          case 'bootStrapTable':
-            this.$router.push(
-              {path: '/bootStrapTable/bootStrapTable'}
-            );
-            break;
-          case 'stop':
-            this.$router.push(
-              {path: '/stop/stop'}
-            );
-            break;
-          case 'search':
-            this.$router.push(
-              {path: '/search/search'}
-            );
-            break;
-          case 'shoppingCar':
-            this.$router.push(
-              {path: '/shoppingCar/shoppingCar'}
-            );
-            break;
-          default :
-            '';
-            break
-        }
+        this.$router.push({path:'/' + anchor + '/' + anchor})
       },
       /**
        * @function getComponents 获取到插件集

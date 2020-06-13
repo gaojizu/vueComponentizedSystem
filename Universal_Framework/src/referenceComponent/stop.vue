@@ -32,6 +32,16 @@
     </van-dialog>
 
     <!--    演示slot的使用-->
+   <el-input v-model.trim = 'trimValue' placeholder="请输入空格"></el-input>
+    <span>
+      {{trimValue}}
+    </span>
+
+
+
+
+
+
 
 
   </div>
@@ -45,6 +55,7 @@
     name: "stop",
     data() {
       return {
+        trimValue:'',//判断输入的是不是空格
         currPage: this.$route.params.pageFlag,
         statValue: 1,
         checkValue: '',
