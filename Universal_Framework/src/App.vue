@@ -6,7 +6,9 @@
 </template>
 
 <script>
-
+  /**
+   * App主文件
+   */
   export default {
     name: 'App',
     data() {
