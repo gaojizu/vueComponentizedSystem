@@ -756,7 +756,6 @@
         this.currValue = val;
       }
     }
-
   }
 </script>
 
