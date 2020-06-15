@@ -873,7 +873,7 @@
             //toolbar: '#toolbar',
             detailView: true,  //前面的加号，详细数据
             singleSelect: true,
-            checkbox: true,
+            checkbox: true, //复选框
             rowStyle: this.rowStyle,
             cellStyle: this.cellStyle,
             clickToSelect: true,
