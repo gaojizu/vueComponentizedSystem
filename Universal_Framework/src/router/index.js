@@ -15,6 +15,7 @@ const search = () => import('@/referenceComponent/search')
 const uploadFile = () => import('@/referenceComponent/uploadFile')
 const base = () => import('@/referenceComponent/base')
 const fileZip = () => import('@/referenceComponent/fileZip')
+const moment = () => import('@/referenceComponent/moment')
 Vue.use(Router)
 
 export default new Router({
@@ -68,6 +69,10 @@ export default new Router({
       path: '/fileZip/:fileZip',
       name: 'fileZip',
       component: fileZip
+    },{
+      path: '/moment/:moment',
+      name: 'moment',
+      component: moment
     }
   ]
 })

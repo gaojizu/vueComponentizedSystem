@@ -11,7 +11,7 @@ const commponents = {
       {name: 'base64转解码', prop: 'base', introduce: 'base64转码与解码'},
       {name: '文本复制', prop: 'copy', introduce: '一件复制文本'},
       {name: '文件压缩', prop: 'fileZip', introduce: 'vue时间文件拍照压缩'},
-      {name: '购物车', prop: 'shoppingCar', introduce: 'ShoppingCarDemo实现'},
+      {name: '时间格式化', prop: 'moment', introduce: 'moment实现时间格式化'},
       {name: '购物车', prop: 'shoppingCar', introduce: 'ShoppingCarDemo实现'},
       {name: '购物车', prop: 'shoppingCar', introduce: 'ShoppingCarDemo实现'},
       {name: '购物车', prop: 'shoppingCar', introduce: 'ShoppingCarDemo实现'},
