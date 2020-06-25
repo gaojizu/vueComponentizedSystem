@@ -16,6 +16,9 @@ const uploadFile = () => import('@/referenceComponent/uploadFile')
 const base = () => import('@/referenceComponent/base')
 const fileZip = () => import('@/referenceComponent/fileZip')
 const moment = () => import('@/referenceComponent/moment')
+const copy = () => import('@/referenceComponent/copy')
+const roll = () => import('@/referenceComponent/roll')
+const temporary = () => import('@/referenceComponent/temporary')
 Vue.use(Router)
 
 export default new Router({
@@ -73,6 +76,22 @@ export default new Router({
       path: '/moment/:moment',
       name: 'moment',
       component: moment
+    },{
+      path:'/roll/:roll',
+      name:'roll',
+      commponent:roll
+    },{
+      path: '/copy/:copy',
+      name: 'copy',
+      component: copy
+    },{
+      path: '/base/:base',
+      name: 'base',
+      component: base
+    },{
+      path: '/temporary/:temporary',
+      name: 'temporary',
+      component: temporary
     }
   ]
 })

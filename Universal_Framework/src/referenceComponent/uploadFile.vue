@@ -1,24 +1,6 @@
 <template>
   <div>
-    <el-select clearable filterable placeholder=""
-               :value="ticket_operatorname" @change="change_v">
-      <el-option
-        v-for="value in ticket_operators"
-        :key="value.id"
-        :label="value.name"
-        :value="value.username">
-      </el-option>
-    </el-select>
-
-
-    <el-select v-model="value" placeholder="请选择">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-      </el-option>
-    </el-select>
+    <van-uploader style="margin-top: 40px;" v-model="fileList" :before-delete="deleteImg" multiple />
   </div>
 </template>
 
@@ -27,7 +9,8 @@
     name: "uploadFile",
     data() {
       return {
-        tic:'',
+        fileList: [],
+        tic: '',
         ticket_operators: [{
           id: 18,
           name: "曹文虎",
@@ -60,15 +43,19 @@
     created() {
       this.ticket_operatorname = this.ticket_operators[0].name
     },
-    methods:{
-      change_v(n){
+    methods: {
+      deleteImg() {
+        //直接删除
+        return true;
+      },
+      change_v(n) {
         console.info(n)
         this.ticket_operatorname = n
       }
     },
-    watch:{
-      tic(n,o){
-        console.info(n,0)
+    watch: {
+      tic(n, o) {
+        console.info(n, 0)
       }
     }
   }

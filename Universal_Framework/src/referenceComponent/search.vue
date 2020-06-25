@@ -2,61 +2,15 @@
   <div>
     <common-back :currPage='currPage'>
     </common-back>
-
-
-
-    <div class="divtest">
-      这是一个div
-       <span>
-         这是一个字体
-       </span>
-
-    </div>
-
-
-    <!--    <van-field onkeypress="TextValidate()" label="不可以特殊字符"></van-field>-->
-    <input onkeypress="TextValidate()" type="text" οnkeyup="this.value=this.value.replace(/[^u4e00-u9fa5w]/g,'');">
-
-    <van-field placeholder="请输入" type="textarea"
-               onkeyup="this.value=this.value.replace(/[#\$\^&]/g,'');"
-               label="应用名称"></van-field>
-
-    <van-field placeholder="请输入表情" type="textarea"
-               v-model="useVlaue"
-               onkeyup="this.value=this.value.replace(/[#\$\^&]/g,'');"
-               label="应用名称"></van-field>
-
-    <van-field v-model="currValue" @click="vantShow=true" placeholder="请选择" label="应用名称"
-               :rules="[{ required: true, message: '请选择应用名称' }]"></van-field>
-
-
+    <van-field v-model="currValue" @click="vantShow=true" placeholder="请选择" label="应用名称" :rules="[{ required: true, message: '请选择应用名称' }]"></van-field>
     <van-popup v-model="vantShow" closeable position="left" :style="{ height: '100%',width:'100%' }">
       <div style="width: 80%;position:sticky;top:0;z-index:1;background:#FFFFFF">
-        <van-search
-          v-model="searchValue"
-          shape="round"
-          placeholder="请输入搜索关键词"
-          input-align="center"
-        />
+        <van-search v-model="searchValue" shape="round" placeholder="请输入搜索关键词" input-align="center" />
       </div>
       <van-cell-group v-for="item in searchResult" :key="item.id">
-        <van-cell :value="item.name" @click="setValue(item.name) ,vantShow=false"/>
+        <van-cell :value="item.name" @click="setValue(item.name) ,vantShow=false" />
       </van-cell-group>
     </van-popup>
-
-    <!--    文件上传-->
-    <van-uploader v-model="fileList" :before-delete="deleteImg" multiple/>
-    <!--滚动-->
-    <div class="scroll">
-      <ul id="scrollDiv" ref="rollul" :class="{anim:animate==true}">
-        <li v-for="item in scroll_lists"><span>{{item.time}}</span>
-<!--          <span class="s-2">{{randomPhoneNumber()}}用户诊断了</span><span>{{item.company}}</span>-->
-        </li>
-      </ul>
-    </div>
-
-
-
   </div>
 </template>
 
@@ -66,17 +20,36 @@
     data() {
       return {
         animate: false,
-        scroll_lists: [
-          {time: '2秒钟前', company: '海康威视（002415）'},
-          {time: '8秒钟前', company: '烽火通信（600498）'},
-          {time: '3分钟前', company: '恒逸石化（000703）'},
-          {time: '5分钟前', company: '紫光国微（002049）'},
-          {time: '39分钟前', company: '新天科技（300259）'},
-          {time: '1小时前', company: '兴业银行（601166）'},
-          {time: '3小时前', company: '中国核建（601611）'}
+        scroll_lists: [{
+            time: '2秒钟前',
+            company: '海康威视（002415）'
+          },
+          {
+            time: '8秒钟前',
+            company: '烽火通信（600498）'
+          },
+          {
+            time: '3分钟前',
+            company: '恒逸石化（000703）'
+          },
+          {
+            time: '5分钟前',
+            company: '紫光国微（002049）'
+          },
+          {
+            time: '39分钟前',
+            company: '新天科技（300259）'
+          },
+          {
+            time: '1小时前',
+            company: '兴业银行（601166）'
+          },
+          {
+            time: '3小时前',
+            company: '中国核建（601611）'
+          }
         ],
         currPage: this.$route.params.pageFlag,
-        fileList: [],
         testvalue: 3,
         testsecond: ' ',
         useVlaue: '',
@@ -88,8 +61,7 @@
         arr1: ["tom"],
         arr2: [],
         arr3: ["tom", "jim", "jerry", "mary"],
-        info: [
-          {
+        info: [{
             "id": 1,
             "name": "EPGDS-专网互联网电视-EPGDS",
             "user_id": "huaxixiao"
@@ -628,7 +600,8 @@
             "id": 119,
             "name": "手机专网用户中心-手机专网用户中心-手机专网用户中心",
             "user_id": "huyuexin"
-          }],
+          }
+        ],
       }
     },
     created() {
@@ -648,7 +621,7 @@
       searchResult() {
         let filterLists = []; //过滤掉的数组
         let _this = this;
-        this.info.map(function (item) {
+        this.info.map(function(item) {
           if (item.name.toLowerCase().indexOf(_this.searchValue.toLowerCase()) > -1) {
             return filterLists.push(item)
           }
@@ -658,19 +631,21 @@
     },
     methods: {
       // 根据字典生成随机序列
-      randomCode: function (len, dict) {
+      randomCode: function(len, dict) {
         for (var i = 0, rs = ''; i < len; i++)
           rs += dict.charAt(Math.floor(Math.random() * 100000000) % dict.length);
         return rs;
       },
       // 生成随机手机号码
-      randomPhoneNumber: function () {
+      randomPhoneNumber: function() {
         // 第1位是1 第2,3位是3458 第4-7位是* 最后四位随机 this.$options.methods使用上一个函数的返回值
-        return [1, this.$options.methods.randomCode(2, '3458'), '****', this.$options.methods.randomCode(4, '0123456789')].join('');
-      }, scroll() {
+        return [1, this.$options.methods.randomCode(2, '3458'), '****', this.$options.methods.randomCode(4,
+          '0123456789')].join('');
+      },
+      scroll() {
         this.animate = true
         var that = this;
-        setTimeout(function () {
+        setTimeout(function() {
           that.scroll_lists.push(that.scroll_lists[0]);
           that.scroll_lists.shift();
           that.animate = false;
@@ -693,18 +668,17 @@
           }
         }
         return a;
-      }
-      ,
+      },
 
       removeFunc() {
         console.info("开始计算...")
-        Array.prototype.indexOf = function (val) {
+        Array.prototype.indexOf = function(val) {
           for (var i = 0; i < this.length; i++) {
             if (this[i] == val) return i;
           }
           return -1;
         };
-        Array.prototype.remove = function (val) {
+        Array.prototype.remove = function(val) {
           var index = this.indexOf(val);
           if (index > -1) {
             this.splice(index, 1);
@@ -712,46 +686,17 @@
         };
         this.arr2 = this.arr3.remove("tom")
         console.info(this.arr2)
-      }
-      ,
+      },
       checkValue() {
-        var regStr = /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig;
+        var regStr =
+          /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig;
         var org_val = this.useVlaue;
         if (regStr.test(org_val)) {
           this.useVlaue = org_val.replace(regStr, "")
           //$("#input").val(org_val.replace(regStr,""));
         }
-      }
-      ,
-      deleteImg() {
-        //直接删除
-        return true;
-      }
-      ,
-      TextValidate() {
-        var code;
-        var character;
-        var err_msg = "Text can not contain SPACES or any of these special characters other than underscore (_) and hyphen (-).";
-        if (document.all) //判断是否是IE浏览器
-        {
-          code = window.event.keyCode;
-        } else {
-          code = arguments.callee.caller.arguments[0].which;
-        }
-        var character = String.fromCharCode(code);
+      },
 
-        var txt = new RegExp("[ ,\\`,\\~,\\!,\\@,\#,\\$,\\%,\\^,\\+,\\*,\\&,\\\\,\\/,\\?,\\|,\\:,\\.,\\<,\\>,\\{,\\},\\(,\\),\\',\\;,\\=,\"]");
-        //特殊字符正则表达式
-        if (txt.test(character)) {
-          alert("User Name can not contain SPACES or any of these special characters:\n , ` ~ ! @ # $ % ^ + & * \\ / ? | : . < > {} () [] \" ");
-          if (document.all) {
-            window.event.returnValue = false;
-          } else {
-            arguments.callee.caller.arguments[0].preventDefault();
-          }
-        }
-      }
-      ,
       setValue(val) {
         this.currValue = val;
       }
@@ -760,11 +705,13 @@
 </script>
 
 <style scoped>
-.divtest{
-  border: 1px solid rebeccapurple;
-}
-  .divtest span{
-    font-size: larger;;
+  .divtest {
+    border: 1px solid rebeccapurple;
+  }
+
+  .divtest span {
+    font-size: larger;
+    ;
     color: red;
   }
 </style>
