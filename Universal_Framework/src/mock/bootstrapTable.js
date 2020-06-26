@@ -1,3 +1,6 @@
+/**
+ * 组件表格的源数据
+ */
 let tabelList = [];
 for (let i = 0; i < 1000; ++i) {
   tabelList.push({
