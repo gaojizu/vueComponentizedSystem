@@ -18,6 +18,7 @@ const fileZip = () => import('@/referenceComponent/fileZip')
 const moment = () => import('@/referenceComponent/moment')
 const copy = () => import('@/referenceComponent/copy')
 const roll = () => import('@/referenceComponent/roll')
+const getKeyandValue = () => import('@/referenceComponent/getKeyandValue')
 const temporary = () => import('@/referenceComponent/temporary')
 Vue.use(Router)
 
@@ -88,6 +89,10 @@ export default new Router({
       path: '/base/:base',
       name: 'base',
       component: base
+    },{
+      path: '/getKeyandValue/:getKeyandValue',
+      name: 'getKeyandValue',
+      component: getKeyandValue
     },{
       path: '/temporary/:temporary',
       name: 'temporary',
