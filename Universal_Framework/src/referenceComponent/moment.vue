@@ -1,5 +1,7 @@
 <template>
-
+<div>
+  <mark><h1>打开console看效果</h1></mark>
+</div>
 </template>
 
 <script>
