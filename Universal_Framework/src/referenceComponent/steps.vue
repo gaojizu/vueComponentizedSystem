@@ -20,10 +20,12 @@
       <el-button type="warning" plain @click="del_steps('behind')">从前面删除一步</el-button>
     </div>
 
+
   </div>
 </template>
 
 <script>
+
   import commonSteps from "../commonComponents/commonSteps";
 
   export default {
@@ -48,6 +50,15 @@
     components: {
       'common-Steps': commonSteps
     },
+    watch: {
+      turnTagTxtList:function () {
+        this.$nextTick(function () {
+          console.info("zhixing")
+          //this.currCheck(index)
+        })
+      }
+    },
+
     methods: {
       /**
        * @function add_steps
@@ -109,4 +120,26 @@
     margin: 10px 10px 10px 10px;
   }
 
+  .tiptitle {
+    font-size: 20px;
+    color: #000;
+  }
+
+  .level-option {
+    text-align: left;
+  }
+
+  #turnTagel {
+    height: 220px;
+    position: relative;
+  }
+
+  /deep/ .van-popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
+  }
 </style>
