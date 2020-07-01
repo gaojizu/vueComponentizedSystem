@@ -5,6 +5,7 @@ import commponentsLists from './commponentsLists'
 import bootstrapTable from './bootstrapTable'
 import loginInfos from "./login";
 import outputDatasOfkey from "./outputDatasOfkey.js"
+import studentLists from "./students.js"
 
 Mock.mock('api/tableList.do', 'post', (option) => {
   if (option.body) {
@@ -31,4 +32,8 @@ Mock.mock('api/login.do', 'post', (option) => {
 
 Mock.mock('api/outputDatasOfkey.do', 'get', () => {
   return outputDatasOfkey
+})
+
+Mock.mock('api/getStudents.do', 'get', () => {
+  return studentLists
 })
