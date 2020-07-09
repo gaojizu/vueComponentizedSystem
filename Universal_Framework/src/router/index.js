@@ -21,6 +21,7 @@ const roll = () => import('@/referenceComponent/roll')
 const getKeyandValue = () => import('@/referenceComponent/getKeyandValue')
 const exportExcel = () => import('@/referenceComponent/exportExcel')
 const sort = () => import('@/referenceComponent/sort')
+const cutscreen = () => import('@/referenceComponent/cutscreen')
 const temporary = () => import('@/referenceComponent/temporary')
 Vue.use(Router)
 
@@ -102,6 +103,10 @@ export default new Router({
       path: '/sort/:sort',
       name: 'sort',
       component: sort
+    },{
+      path: '/cutscreen/:cutscreen',
+      name: 'cutscreen',
+      component: cutscreen
     }, {
       path: '/temporary/:temporary',
       name: 'temporary',
