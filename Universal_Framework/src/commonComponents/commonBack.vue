@@ -15,14 +15,21 @@
       }
     },
     data() {
-      return {}
+      root: '我是根结点'
+      return {
+      }
+    },
+    created() {
+      console.info(this.$root.root)
     },
     methods: {
       /**
        * @function goBack 返回主页
        */
       goBack() {
-        this.$router.push({path: "/main"})
+        this.$router.push({
+          path: "/main"
+        })
       }
     }
   }
@@ -31,6 +38,6 @@
   #global-back {
     color: #58aef5;
     margin-top: 10px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
 </style>

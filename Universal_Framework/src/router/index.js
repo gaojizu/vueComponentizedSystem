@@ -22,6 +22,8 @@ const getKeyandValue = () => import('@/referenceComponent/getKeyandValue')
 const exportExcel = () => import('@/referenceComponent/exportExcel')
 const sort = () => import('@/referenceComponent/sort')
 const cutscreen = () => import('@/referenceComponent/cutscreen')
+const depthResponse = () => import('@/referenceComponent/depthResponse')
+const baseAssembly = () => import('@/referenceComponent/baseAssembly')
 const temporary = () => import('@/referenceComponent/temporary')
 Vue.use(Router)
 
@@ -103,10 +105,18 @@ export default new Router({
       path: '/sort/:sort',
       name: 'sort',
       component: sort
-    },{
+    }, {
       path: '/cutscreen/:cutscreen',
       name: 'cutscreen',
       component: cutscreen
+    }, {
+      path: '/depthResponse/:depthResponse',
+      name: 'depthResponse',
+      component: depthResponse
+    }, {
+      path: '/baseAssembly/:baseAssembly',
+      name: 'baseAssembly',
+      component: baseAssembly
     }, {
       path: '/temporary/:temporary',
       name: 'temporary',

@@ -57,20 +57,31 @@
           checkPass: '',
         },
         rules: {
-          name: [
-            {validator: validatename, trigger: 'blur'}
-          ],
-          pass: [
-            {validator: validatePass, trigger: 'blur'}
-          ],
-          checkPass: [
-            {validator: validatePass2, trigger: 'blur'}
-          ],
+          name: [{
+            validator: validatename,
+            trigger: 'blur'
+          }],
+          pass: [{
+            validator: validatePass,
+            trigger: 'blur'
+          }],
+          checkPass: [{
+            validator: validatePass2,
+            trigger: 'blur'
+          }],
         }
       };
     },
     mounted() {
       localStorage.clear();
+      let that = this;
+      document.onkeypress = function(e) {
+        var keycode = document.all ? event.keyCode : e.which;
+        if (keycode == 13) {
+          that.login();
+          return false;
+        }
+      };
     },
     methods: {
       /**
@@ -88,12 +99,17 @@
         });
       },
       login(name, password) {
-        this.$axios.post('api/login.do', {name: name, password: password}).then((res) => {
+        this.$axios.post('api/login.do', {
+          name: name,
+          password: password
+        }).then((res) => {
           if (res.data.code === 200) {
             console.log(123)
             sessionStorage.setItem('loginName', name)
             sessionStorage.setItem('password', password)
-            this.$router.push({path: '/main'})
+            this.$router.push({
+              path: '/main'
+            })
           }
         }).catch((error) => {
           console.info(error)
