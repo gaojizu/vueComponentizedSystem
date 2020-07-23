@@ -18,6 +18,7 @@ import './mock/index' //引入mockjs 虚拟数据
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import './moment'
+import Mixin from '@/assets/mixins/sort'
 
 Vue.use(Vant);
 Vue.use(ElementUI)
@@ -26,6 +27,7 @@ Vue.component("common-header", commonHeader)
 Vue.prototype.$api = api; //真实接口使用 需在api中配置相应的接口文件
 Vue.prototype.$axios = Axios; //mockjs使用
 Vue.config.productionTip = false
+Vue.mixin(Mixin)
 
 new Vue({
   el: '#app',

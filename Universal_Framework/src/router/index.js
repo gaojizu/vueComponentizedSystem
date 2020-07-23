@@ -20,12 +20,15 @@ const copy = () => import('@/referenceComponent/copy')
 const roll = () => import('@/referenceComponent/roll')
 const getKeyandValue = () => import('@/referenceComponent/getKeyandValue')
 const exportExcel = () => import('@/referenceComponent/exportExcel')
+const sort = () => import('@/referenceComponent/sort')
+const cutscreen = () => import('@/referenceComponent/cutscreen')
+const depthResponse = () => import('@/referenceComponent/depthResponse')
+const baseAssembly = () => import('@/referenceComponent/baseAssembly')
 const temporary = () => import('@/referenceComponent/temporary')
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'login',
       component: login
@@ -65,40 +68,56 @@ export default new Router({
       path: '/uploadFile/:uploadFile',
       name: 'uploadFile',
       component: uploadFile
-    },//
+    }, //
     {
       path: '/fileZip/:fileZip',
       name: 'fileZip',
       component: fileZip
-    },{
+    }, {
       path: '/fileZip/:fileZip',
       name: 'fileZip',
       component: fileZip
-    },{
+    }, {
       path: '/moment/:moment',
       name: 'moment',
       component: moment
-    },{
-      path:'/roll/:roll',
-      name:'roll',
-      commponent:roll
-    },{
+    }, {
+      path: '/roll/:roll',
+      name: 'roll',
+      commponent: roll
+    }, {
       path: '/copy/:copy',
       name: 'copy',
       component: copy
-    },{
+    }, {
       path: '/base/:base',
       name: 'base',
       component: base
-    },{
+    }, {
       path: '/getKeyandValue/:getKeyandValue',
       name: 'getKeyandValue',
       component: getKeyandValue
-    },{
+    }, {
       path: '/exportExcel/:exportExcel',
       name: 'exportExcel',
       component: exportExcel
-    },{
+    }, {
+      path: '/sort/:sort',
+      name: 'sort',
+      component: sort
+    }, {
+      path: '/cutscreen/:cutscreen',
+      name: 'cutscreen',
+      component: cutscreen
+    }, {
+      path: '/depthResponse/:depthResponse',
+      name: 'depthResponse',
+      component: depthResponse
+    }, {
+      path: '/baseAssembly/:baseAssembly',
+      name: 'baseAssembly',
+      component: baseAssembly
+    }, {
       path: '/temporary/:temporary',
       name: 'temporary',
       component: temporary
