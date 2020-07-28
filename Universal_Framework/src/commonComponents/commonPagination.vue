@@ -8,6 +8,7 @@
 
 <script>
   export default {
+    
     props: {
       page_size: {
         type: Number,

@@ -4,12 +4,12 @@
       <el-button @click="statusDialog = true">
         打开dialog
       </el-button>
-      <commonDialog :title="title" :options="currOptions" :openCurrDialog="statusDialog" @_closeIt="_closeCurrDialog"></commonDialog>
+      <commonDialog :msg="msg" :title="title" :options="currOptions" :openCurrDialog="statusDialog" @_closeIt="_closeCurrDialog"></commonDialog>
     </el-card>
-    <el-card style="margin: 10px;">
+    <!-- <el-card style="margin: 10px;">
       <el-switch v-model="is_show"></el-switch>
       <commonPagination :isShow="is_show" @handleCurrentChange="handleCurrentChange" :total="total" :current_page="current_page"></commonPagination>
-    </el-card>
+    </el-card> -->
   </div>
 </template>
 
@@ -23,6 +23,7 @@
     },
     data() {
       return {
+        msg:"我是来自父亲的关爱",
         is_show: true, //是否显示当前的分页信息
         total: 400, //总条数
         current_page: 1, //当前页码
