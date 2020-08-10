@@ -1,10 +1,12 @@
 import Axios from 'axios'
 
 const request = Axios.create({
+  baseURL: process.env.url_api,
   timeout: 800
 })
 //请求配置
 request.interceptors.request.use(config => {
+  console.info(config)
   return config
 }, error => {
   return Promise.reject(error)
@@ -15,22 +17,26 @@ request.interceptors.response.use(reponse => {
 }, error => {
   return Promise.reject(error)
 })
-export default function (method, url, data) {
+export default function(method, url, data) {
   console.info(method, url, data)
   switch (method) {
-    case 'post' :
+    case 'post':
       return request.post(url, data);
       break;
-    case 'get' :
-      return request.get(url, {params: data});
+    case 'get':
+      return request.get(url, {
+        params: data
+      });
       break
     case 'put':
       return request.put(url, data);
       break
     case 'delete':
-      return request.delete(url, {params: data});
+      return request.delete(url, {
+        params: data
+      });
       break
-    default :
+    default:
       return false
       break
   }

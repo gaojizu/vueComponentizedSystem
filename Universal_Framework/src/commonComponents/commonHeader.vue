@@ -6,7 +6,7 @@
           <i style="cursor: pointer" class="el-icon-picture-outline-round" @click="mainPage">LOGO</i>
         </el-col>
         <el-col :span="16">
-         基于VUE常见的小功能
+         VUE组件系统
         </el-col>
         <el-col :span="4">
           <el-dropdown>
