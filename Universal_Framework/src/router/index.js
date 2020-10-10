@@ -24,10 +24,6 @@ const sort = () => import('@/referenceComponent/sort')
 const cutscreen = () => import('@/referenceComponent/cutscreen')
 const depthResponse = () => import('@/referenceComponent/depthResponse')
 const baseAssembly = () => import('@/referenceComponent/baseAssembly')
-const tree = () => import('@/referenceComponent/tree')
-const Unbound = () => import('@/referenceComponent/Unbound')
-const vueModules = () => import('@/referenceComponent/vueModules')
-const vantDropdownMenu = () => import('@/referenceComponent/vant-dropdown-menu')
 const temporary = () => import('@/referenceComponent/temporary')
 Vue.use(Router)
 
@@ -122,22 +118,6 @@ export default new Router({
       name: 'baseAssembly',
       component: baseAssembly
     }, {
-      path: '/tree/:tree',
-      name: 'tree',
-      component: tree
-    }, {
-      path: '/Unbound/:Unbound',
-      name: 'Unbound',
-      component: Unbound
-    },{
-      path: '/vueModules/:vueModules',
-      name: 'vueModules',
-      component: vueModules 
-    },{
-      path: '/vantDropdownMenu/:vantDropdownMenu',
-      name: 'vantDropdownMenu',
-      component: vantDropdownMenu 
-    },  {
       path: '/temporary/:temporary',
       name: 'temporary',
       component: temporary

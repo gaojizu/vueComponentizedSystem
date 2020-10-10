@@ -11,7 +11,6 @@
         </li>
       </ul>
     </div>
-    <button @click.prevent.once="testOnce">点击</button>
   </div>
 </template>
 
@@ -24,9 +23,6 @@
       }
     },
     methods: {
-      testOnce(){
-        console.info("dianji")
-      },
       TextValidate() {
         var code;
         var character;
