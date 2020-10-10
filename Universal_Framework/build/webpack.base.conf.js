@@ -9,7 +9,6 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-console.log(process.env)
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -19,9 +18,9 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production' ?
-      config.build.assetsPublicPath :
-      config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -31,7 +30,8 @@ module.exports = {
     }
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
@@ -64,11 +64,7 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }, {
-        test: /.less$/,
-        loader: "style-loader!css-loader!less-loader",
       }
-
     ]
   },
   node: {
