@@ -21,7 +21,12 @@ import 'vant/lib/index.css';
 import './moment'
 import Mixin from '@/assets/mixins/sort'
 
+import less from 'less'
+Vue.use(less)
 
+// 引入echarts图表
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 
 Vue.use(Vant);
 Vue.use(ElementUI)

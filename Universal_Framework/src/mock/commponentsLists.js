@@ -99,12 +99,30 @@ const commponents = {
       {
         name: 'vuex模块化实现',
         prop: 'vueModules',
-        introduce: 'vuex的模块化实现过程' //vantDropdownMenu
+        introduce: 'vuex的模块化实现过程'
       },
       {
         name: 'vantDropdownMenuDemo实现',
         prop: 'vantDropdownMenu',
-        introduce: 'vantDropdownMenu实现一个demo，验证传递的值' //vantDropdownMenu
+        introduce: 'vantDropdownMenu实现一个demo，验证传递的值'
+      },
+      {
+        name: 'promise的用法实现',
+        prop: 'use_promise',
+        introduce: 'use_promise写法实现'
+      },
+      {
+        name: 'Gojs实现拖拽的用法实现',
+        prop: 'drag',
+        introduce: 'drag写法实现'
+      },{
+        name: 'elementui里面的tree树形结构的数据处理',
+        prop: 'el_tree',
+        introduce: 'el_tree写法实现'
+      },{
+        name: 'echartdemo实现',
+        prop: 'echart',
+        introduce: 'echart 实现一个小例子'
       },
       {
         name: '临时存储Demo',
