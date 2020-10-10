@@ -14,19 +14,11 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap-table/dist/bootstrap-table.min.css'
 import 'bootstrap-table/dist/bootstrap-table.min.js'
 import 'bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js'
-import 'normalize.css/normalize.css'
 import './mock/index' //引入mockjs 虚拟数据
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import './moment'
 import Mixin from '@/assets/mixins/sort'
-
-import less from 'less'
-Vue.use(less)
-
-// 引入echarts图表
-import echarts from 'echarts'
-Vue.prototype.$echarts = echarts
 
 Vue.use(Vant);
 Vue.use(ElementUI)
@@ -36,8 +28,6 @@ Vue.prototype.$api = api; //真实接口使用 需在api中配置相应的接口
 Vue.prototype.$axios = Axios; //mockjs使用
 Vue.config.productionTip = false
 Vue.mixin(Mixin)
-
-console.log(process.env)
 
 new Vue({
   el: '#app',
