@@ -25,6 +25,7 @@ const cutscreen = () => import('@/referenceComponent/cutscreen')
 const depthResponse = () => import('@/referenceComponent/depthResponse')
 const baseAssembly = () => import('@/referenceComponent/baseAssembly')
 const temporary = () => import('@/referenceComponent/temporary')
+const mainComponent = () => import('@/referenceComponent/Dynamic/mainComponent')
 Vue.use(Router)
 
 export default new Router({
@@ -121,6 +122,11 @@ export default new Router({
       path: '/temporary/:temporary',
       name: 'temporary',
       component: temporary
+    },
+    {
+      path: '/mainComponent/:mainComponent',
+      name: 'mainComponent',
+      component: mainComponent
     }
   ]
 })

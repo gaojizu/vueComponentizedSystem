@@ -19,6 +19,7 @@ const commponents = {
       {name: '屏幕截图', prop: 'cutscreen', introduce: '对屏幕进行截图'},
       {name: 'vue深度相应', prop: 'depthResponse', introduce: 'vue对象和数组时候的响应式'},
       {name: 'vue组件化使用实例', prop: 'baseAssembly', introduce: 'vue组件化实现'},
+      {name: 'vue动态组件展示', prop: 'mainComponent', introduce: 'vue动态组件展示demo'},
       {name: '临时存储Demo', prop: 'temporary', introduce: '临时文件暂存，实现一些临时需要基于vue实现的一些小功能'},
     ]
   },
