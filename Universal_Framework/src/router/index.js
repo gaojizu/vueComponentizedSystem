@@ -24,6 +24,14 @@ const sort = () => import('@/referenceComponent/sort')
 const cutscreen = () => import('@/referenceComponent/cutscreen')
 const depthResponse = () => import('@/referenceComponent/depthResponse')
 const baseAssembly = () => import('@/referenceComponent/baseAssembly')
+const tree = () => import('@/referenceComponent/tree')
+const Unbound = () => import('@/referenceComponent/Unbound')
+const vueModules = () => import('@/referenceComponent/vueModules')
+const vantDropdownMenu = () => import('@/referenceComponent/vant-dropdown-menu')
+const use_promise = () => import('@/referenceComponent/use_promise')
+const drag = () => import('@/referenceComponent/drag')
+const el_tree = () => import('@/referenceComponent/el_tree')
+const echart = () => import('@/referenceComponent/echart')
 const temporary = () => import('@/referenceComponent/temporary')
 Vue.use(Router)
 
@@ -117,6 +125,38 @@ export default new Router({
       path: '/baseAssembly/:baseAssembly',
       name: 'baseAssembly',
       component: baseAssembly
+    }, {
+      path: '/tree/:tree',
+      name: 'tree',
+      component: tree
+    }, {
+      path: '/Unbound/:Unbound',
+      name: 'Unbound',
+      component: Unbound
+    }, {
+      path: '/vueModules/:vueModules',
+      name: 'vueModules',
+      component: vueModules
+    }, {
+      path: '/vantDropdownMenu/:vantDropdownMenu',
+      name: 'vantDropdownMenu',
+      component: vantDropdownMenu
+    }, {
+      path: '/use_promise/:use_promise',
+      name: 'use_promise',
+      component: use_promise
+    }, {
+      path: '/drag/:drag',
+      name: 'drag',
+      component: drag
+    }, {
+      path: '/el_tree/:el_tree',
+      name: 'el_tree',
+      component: el_tree
+    }, {
+      path: '/echart/:echart',
+      name: 'echart',
+      component: echart
     }, {
       path: '/temporary/:temporary',
       name: 'temporary',
