@@ -25,6 +25,8 @@ const cutscreen = () => import('@/referenceComponent/cutscreen')
 const depthResponse = () => import('@/referenceComponent/depthResponse')
 const baseAssembly = () => import('@/referenceComponent/baseAssembly')
 const temporary = () => import('@/referenceComponent/temporary')
+const input_label = () => import('@/referenceComponent/input_label')
+const checkBox = () => import('@/referenceComponent/checkBox')
 const mainComponent = () => import('@/referenceComponent/Dynamic/mainComponent')
 Vue.use(Router)
 
@@ -122,6 +124,16 @@ export default new Router({
       path: '/temporary/:temporary',
       name: 'temporary',
       component: temporary
+    },
+    {
+      path: '/input_label/:input_label',
+      name: 'input_label',
+      component: input_label
+    },
+    {
+      path: '/checkBox/:checkBox',
+      name: 'checkBox',
+      component: checkBox
     },
     {
       path: '/mainComponent/:mainComponent',

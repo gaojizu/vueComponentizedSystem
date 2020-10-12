@@ -20,6 +20,8 @@ const commponents = {
       {name: 'vue深度相应', prop: 'depthResponse', introduce: 'vue对象和数组时候的响应式'},
       {name: 'vue组件化使用实例', prop: 'baseAssembly', introduce: 'vue组件化实现'},
       {name: 'vue动态组件展示', prop: 'mainComponent', introduce: 'vue动态组件展示demo'},
+      {name: 'element中实现输入框回车生成一个标签', prop: 'input_label', introduce: 'element中实现输入框回车生成一个标签'},
+      {name: 'vue多选框实现全选和反选', prop: 'checkBox', introduce: 'vue多选框实现全选和反选'},
       {name: '临时存储Demo', prop: 'temporary', introduce: '临时文件暂存，实现一些临时需要基于vue实现的一些小功能'},
     ]
   },
