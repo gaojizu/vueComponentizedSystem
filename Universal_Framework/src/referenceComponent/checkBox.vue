@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
-   <el-checkbox :indeterminate="isIndeterminate" v-model="reseverflg" @change="resever">反选</el-checkbox>
+   <el-checkbox :indeterminate="isIndeterminate" v-model="Reverseflg" @change="Reverse">反选</el-checkbox>
     <div style="margin: 15px 0;"></div>
     <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
       <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
@@ -15,7 +15,7 @@
     data() {
       return {
         checkAll: false,
-        reseverflg : false,
+        Reverseflg : false,
         checkedCities: ['上海', '北京'],
         cities: cityOptions,
         isIndeterminate: true
@@ -35,7 +35,7 @@
         this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
       },
       //反选
-      resever(){
+      Reverse(){
         //记录当前被选中的值给一个空数组
         let idx;//记录当前是不是存在这个值
         let currArr = []; //记录当前的选择的数组
